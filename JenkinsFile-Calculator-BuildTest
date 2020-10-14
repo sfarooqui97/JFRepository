@@ -3,7 +3,7 @@ pipeline {
     stages {
          stage("Checkout Stage") {
               steps {
-                   git url: 'https://github.com/ppotluri9999/calculator.git'
+                   git url: 'https://github.com/sfarooqui97/calculator.git'
               }
          }
          stage("Compile Build Stage") {
@@ -14,6 +14,11 @@ pipeline {
          stage("Compile Test Stage") {
               steps {
                    sh "./gradlew test"
+              }
+         }
+         stage("Code Coverage") {
+              steps {
+                   sh "./gradlew jacocoTestCoverageVerification"
               }
          }
     }
